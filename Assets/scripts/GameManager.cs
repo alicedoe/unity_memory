@@ -9,13 +9,16 @@ public class GameManager : MonoBehaviour {
     public Sprite[] cardFace;
     public Sprite cardBack;
     public GameObject[] cards;
+    public Text winText;
     public Text matchText;
+    public Text timerText;
     public GameObject winBlock;
     public GameObject findMatch;
 
     private bool _init = false;
     private int _matches = 0;
-	
+    private float startTime;
+
 	// Update is called once per frame
 	void Update () {
         if (!_init) {
@@ -25,6 +28,17 @@ public class GameManager : MonoBehaviour {
         }
         if (Input.GetMouseButtonUp(0))
             checkCards();
+        
+        float t = Time.time - startTime;
+        string minutes = ((int) t / 60).ToString();
+        string secondes = (t % 60).ToString("f2");
+
+        if (_matches == 13)
+            {
+                string time = timerText.text;
+                timerText.text = "Finish";
+            } else timerText.text = minutes+":"+secondes;
+        
 	}
 
     void initializeCards()
@@ -47,8 +61,10 @@ public class GameManager : MonoBehaviour {
 
         foreach (GameObject c in cards)
             c.GetComponent<Card>().setupGraphics();
-        if (!_init)
+        if (!_init) {
+            startTime = Time.time;
             _init = true;
+        }           
 
     }
 
@@ -81,12 +97,14 @@ public class GameManager : MonoBehaviour {
         if(cards[c[0]].GetComponent<Card>().cardValue == cards[c[1]].GetComponent<Card>().cardValue)
         {
             x = 2;
-            displayMessage( "matche" );
+            displayMessage( "matche",null );
             _matches++;
             matchText.text = "Number of matches: " + _matches;
             if (_matches == 13)
             {
-                displayMessage( "win" );
+                string time = timerText.text;
+                Debug.Log(string.Format("time = {0}", time));
+                displayMessage( "win", time );
             }
         }
 
@@ -98,16 +116,17 @@ public class GameManager : MonoBehaviour {
         }
     }   
 
-    public void displayMessage( string message )
+    public void displayMessage( string message, string time )
     {
-        StartCoroutine( winMessage( message ) );
+        StartCoroutine( winMessage( message, time ) );
     }
 
-    IEnumerator winMessage( string message )
+    IEnumerator winMessage( string message, string time )
     {
         if ( message == "win") {
             winBlock.gameObject.SetActive(true);
-            yield return new WaitForSeconds(2);
+            winText.text = "Victory time : "+time;
+            yield return new WaitForSeconds(3);
             SceneManager.LoadScene("Menu");
         }
 
