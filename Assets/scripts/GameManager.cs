@@ -11,14 +11,16 @@ public class GameManager : MonoBehaviour {
     public GameObject[] cards;
     public Text matchText;
     public GameObject winBlock;
+    public GameObject findMatch;
 
     private bool _init = false;
-    private int _matches = 13;
+    private int _matches = 0;
 	
 	// Update is called once per frame
 	void Update () {
         if (!_init) {
             winBlock.gameObject.SetActive(false);
+            findMatch.gameObject.SetActive(false);
             initializeCards(); 
         }
         if (Input.GetMouseButtonUp(0))
@@ -79,11 +81,12 @@ public class GameManager : MonoBehaviour {
         if(cards[c[0]].GetComponent<Card>().cardValue == cards[c[1]].GetComponent<Card>().cardValue)
         {
             x = 2;
-            _matches--;
+            displayMessage( "matche" );
+            _matches++;
             matchText.text = "Number of matches: " + _matches;
-            if (_matches == 0)
+            if (_matches == 13)
             {
-                winGame();
+                displayMessage( "win" );
             }
         }
 
@@ -95,15 +98,24 @@ public class GameManager : MonoBehaviour {
         }
     }   
 
-    public void winGame()
+    public void displayMessage( string message )
     {
-        StartCoroutine(winMessage());
+        StartCoroutine( winMessage( message ) );
     }
 
-    IEnumerator winMessage()
+    IEnumerator winMessage( string message )
     {
-        winBlock.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Menu");
+        if ( message == "win") {
+            winBlock.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2);
+            SceneManager.LoadScene("Menu");
+        }
+
+        if ( message == "matche") {
+            findMatch.gameObject.SetActive(true);
+            yield return new WaitForSeconds(1);
+            findMatch.gameObject.SetActive(false);
+        }
+        
     }
 }
