@@ -10,14 +10,17 @@ public class GameManager : MonoBehaviour {
     public Sprite cardBack;
     public GameObject[] cards;
     public Text matchText;
+    public Text winText;
 
     private bool _init = false;
     private int _matches = 13;
 	
 	// Update is called once per frame
 	void Update () {
-        if (!_init)
-            initializeCards();
+        if (!_init) {
+            winText.gameObject.SetActive(false);
+            initializeCards(); 
+        }
         if (Input.GetMouseButtonUp(0))
             checkCards();
 	}
@@ -80,6 +83,7 @@ public class GameManager : MonoBehaviour {
             matchText.text = "Number of matches: " + _matches;
             if (_matches == 0)
             {
+                winGame();
                 SceneManager.LoadScene("Menu");
             }
         }
@@ -90,5 +94,17 @@ public class GameManager : MonoBehaviour {
             
             cards[c[i]].GetComponent<Card>().falseCheck(x);
         }
+    }   
+
+    public void winGame()
+    {
+        StartCoroutine(winMessage());
+    }
+
+    IEnumerator winMessage()
+    {
+        winText.gameObject.SetActive(true);
+        winText.text = "Victoire !! it's marvelous !!";
+        yield return new WaitForSeconds(2);
     }
 }

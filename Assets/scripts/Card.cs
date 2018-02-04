@@ -71,7 +71,6 @@ public class Card : MonoBehaviour {
 
     IEnumerator pause(int x)
     {
-        Debug.Log(string.Format("Matche = {0}", x));
         if ( x == 2) yield return new WaitForSeconds(0);
         else yield return new WaitForSeconds(1);
         if (_state == 0)
