@@ -14,10 +14,17 @@ public class GameManager : MonoBehaviour {
     public Text timerText;
     public GameObject winBlock;
     public GameObject findMatch;
+    public static float highscore;
 
     private bool _init = false;
     private int _matches = 0;
     private float startTime;
+    private float finalTime;
+    private float t;
+
+    void start() {
+        highscore = PlayerPrefs.GetFloat ("highscore");
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -29,9 +36,9 @@ public class GameManager : MonoBehaviour {
         if (Input.GetMouseButtonUp(0))
             checkCards();
         
-        float t = Time.time - startTime;
+        t = Time.time - startTime;
         string minutes = ((int) t / 60).ToString();
-        string secondes = (t % 60).ToString("f2");
+        string secondes = (t % 60).ToString("f0");
 
         if (_matches == 13)
             {
@@ -80,6 +87,17 @@ public class GameManager : MonoBehaviour {
 
     void checkCards()
     {
+        bool exist;
+        if (PlayerPrefs.HasKey("test"))
+            {
+                exist = true;
+                string test = PlayerPrefs.GetString("test");
+                Debug.Log(string.Format("highscore exist = {0} - {1}", exist, test));
+            } else {
+                exist = false;
+                Debug.Log(string.Format("highscore exist = {0} - {1}", exist));
+            }
+            
         List<int> c = new List<int>();
         for (int i = 0; i < cards.Length; i++)
         {
@@ -94,6 +112,7 @@ public class GameManager : MonoBehaviour {
     {
         Card.DO_NOT = true;
         int x = 0;
+        Debug.Log(string.Format("highscore = {0} - t = {1}", highscore,t));
         if(cards[c[0]].GetComponent<Card>().cardValue == cards[c[1]].GetComponent<Card>().cardValue)
         {
             x = 2;
@@ -103,7 +122,6 @@ public class GameManager : MonoBehaviour {
             if (_matches == 13)
             {
                 string time = timerText.text;
-                Debug.Log(string.Format("time = {0}", time));
                 displayMessage( "win", time );
             }
         }
@@ -126,7 +144,9 @@ public class GameManager : MonoBehaviour {
         if ( message == "win") {
             winBlock.gameObject.SetActive(true);
             winText.text = "Victory time : "+time;
-            yield return new WaitForSeconds(3);
+            Debug.Log(string.Format("highscore = {0} - t = {1}", highscore,t));
+
+            yield return new WaitForSeconds(1);
             SceneManager.LoadScene("Menu");
         }
 

@@ -679,8 +679,8 @@ MonoBehaviour:
   - {fileID: 831422956}
   - {fileID: 1977752504}
   - {fileID: 865351759}
-  matchText: {fileID: 1527298101}
   winText: {fileID: 1586207098}
+  matchText: {fileID: 1527298101}
   timerText: {fileID: 179285749}
   winBlock: {fileID: 1962350502}
   findMatch: {fileID: 1901154095}
@@ -3099,7 +3099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6760202, g: 0.8602941, b: 0.25302765, a: 1}
+  m_Color: {r: 0.4537451, g: 0.5661765, b: 0.19566391, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
