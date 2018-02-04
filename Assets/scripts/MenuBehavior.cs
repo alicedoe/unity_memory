@@ -9,10 +9,12 @@ public class MenuBehavior : MonoBehaviour {
     public static float highscore;
     public Text highscoreText;
 
-    void start() {
-        // highscore = PlayerPrefs.GetFloat ("highscore", highscore);
-        
-        // highscoreText.text = "Best time : "+highscore;
+    void Start() {
+        if ( PlayerPrefs.HasKey("highscore") ) {
+            highscore = PlayerPrefs.GetFloat("highscore");
+        }
+
+        highscoreText.text = "Reccord : "+GameManager.highscoreToString(highscore);
     }
 
     public void triggerMenuBehavior (int i) {

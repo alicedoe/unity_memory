@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
     private float finalTime;
     private float t;
 
-    void start() {
+    void Start() {
         highscore = PlayerPrefs.GetFloat ("highscore");
     }
 
@@ -37,14 +37,12 @@ public class GameManager : MonoBehaviour {
             checkCards();
         
         t = Time.time - startTime;
-        string minutes = ((int) t / 60).ToString();
-        string secondes = (t % 60).ToString("f0");
 
         if (_matches == 13)
             {
                 string time = timerText.text;
                 timerText.text = "Finish";
-            } else timerText.text = minutes+":"+secondes;
+            } else timerText.text = highscoreToString(t);
         
 	}
 
@@ -86,18 +84,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void checkCards()
-    {
-        bool exist;
-        if (PlayerPrefs.HasKey("test"))
-            {
-                exist = true;
-                string test = PlayerPrefs.GetString("test");
-                Debug.Log(string.Format("highscore exist = {0} - {1}", exist, test));
-            } else {
-                exist = false;
-                Debug.Log(string.Format("highscore exist = {0} - {1}", exist));
-            }
-            
+    {       
         List<int> c = new List<int>();
         for (int i = 0; i < cards.Length; i++)
         {
@@ -143,8 +130,13 @@ public class GameManager : MonoBehaviour {
     {
         if ( message == "win") {
             winBlock.gameObject.SetActive(true);
-            winText.text = "Victory time : "+time;
-            Debug.Log(string.Format("highscore = {0} - t = {1}", highscore,t));
+            
+            if ( highscore > t ) {
+                PlayerPrefs.SetFloat ("highscore", t);
+                winText.text = "New reccord : "+time;
+            } else {
+                winText.text = "Your time : "+time;
+            }
 
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene("Menu");
@@ -156,5 +148,20 @@ public class GameManager : MonoBehaviour {
             findMatch.gameObject.SetActive(false);
         }
         
+    }
+
+    public static string highscoreToString(float score) {
+        string minutesStr;
+        int minutes = ((int) score / 60);
+        if ( minutes < 10 ) minutesStr = "0"+minutes.ToString();
+        else minutesStr = minutes.ToString();
+
+        string secondesStr;
+        float secondes = score % 60;
+        if ( secondes < 10 ) secondesStr = "0"+secondes.ToString("f0");
+        else secondesStr = secondes.ToString("f0");
+        
+        string scoreString = minutesStr+":"+secondesStr;
+        return scoreString;
     }
 }
