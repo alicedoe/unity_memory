@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
     public Sprite cardBack;
     public GameObject[] cards;
     public Text matchText;
-    public Text winText;
+    public GameObject winBlock;
 
     private bool _init = false;
     private int _matches = 13;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (!_init) {
-            winText.gameObject.SetActive(false);
+            winBlock.gameObject.SetActive(false);
             initializeCards(); 
         }
         if (Input.GetMouseButtonUp(0))
@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour {
             if (_matches == 0)
             {
                 winGame();
-                SceneManager.LoadScene("Menu");
             }
         }
 
@@ -103,8 +102,8 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator winMessage()
     {
-        winText.gameObject.SetActive(true);
-        winText.text = "Victoire !! it's marvelous !!";
+        winBlock.gameObject.SetActive(true);
         yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Menu");
     }
 }
