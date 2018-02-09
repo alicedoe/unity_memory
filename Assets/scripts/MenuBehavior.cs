@@ -12,6 +12,8 @@ public class MenuBehavior : MonoBehaviour {
     void Start() {
         if ( PlayerPrefs.HasKey("highscore") ) {
             highscore = PlayerPrefs.GetFloat("highscore");
+        } else {
+            highscore = 0;
         }
 
         highscoreText.text = "Reccord : "+GameManager.highscoreToString(highscore);

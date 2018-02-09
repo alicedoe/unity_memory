@@ -638,19 +638,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardFace:
-  - {fileID: 21300000, guid: 35252724420b8c044b6a64c6744a1304, type: 3}
-  - {fileID: 21300000, guid: 7d1fb565d672ea244ab49ecb86b51c67, type: 3}
-  - {fileID: 21300000, guid: 3a8bf38175415104d9d864a91b996733, type: 3}
-  - {fileID: 21300000, guid: 4c4f64ca5aad25b4991cf9fbbcaee726, type: 3}
-  - {fileID: 21300000, guid: b455490feecf322478e9c319503a9055, type: 3}
-  - {fileID: 21300000, guid: 2f8c0a43f2e58224989764fcebe2a64b, type: 3}
-  - {fileID: 21300000, guid: f50e7d961af9c124a8ffa5a79a93417e, type: 3}
-  - {fileID: 21300000, guid: a1aaec1f893c9084c859dbee63ee3b7c, type: 3}
-  - {fileID: 21300000, guid: ab1bc2196674c114d9b9670308922eeb, type: 3}
-  - {fileID: 21300000, guid: c6e185caf0364b244aea54aad555dc6c, type: 3}
-  - {fileID: 21300000, guid: 39fe87b514e1b194e983d292faf5f279, type: 3}
-  - {fileID: 21300000, guid: 5f809a6b45fb03b44bd8e4e88aa68ad8, type: 3}
-  - {fileID: 21300000, guid: 04f0071a75c294945b17d3b336619a96, type: 3}
+  - {fileID: 21300000, guid: 84a4119d5ce24dd43a022e0081fa5181, type: 3}
+  - {fileID: 21300000, guid: caa383710257dc440a54c76ac01a88af, type: 3}
+  - {fileID: 21300000, guid: 43383e1b7426baf478f4c5ff31426ca5, type: 3}
+  - {fileID: 21300000, guid: 05e4c02e915e48044896bf29bcbddf39, type: 3}
+  - {fileID: 21300000, guid: b6303b30d18740945b4604d125758318, type: 3}
+  - {fileID: 21300000, guid: b75e0977aace4a84e81912dfaf04d13a, type: 3}
+  - {fileID: 21300000, guid: 30ae82d1bf812944c8ca595d9c7ccd48, type: 3}
+  - {fileID: 21300000, guid: fa204e8e6cf1a1c4299638363708eefd, type: 3}
+  - {fileID: 21300000, guid: 01cbdb83b3ffe154f8cbc64a3fb58907, type: 3}
+  - {fileID: 21300000, guid: dba47a1efeddb7e4ab99fdf4d82d4359, type: 3}
+  - {fileID: 21300000, guid: 844893bd326567240b19bf56b78f6e77, type: 3}
+  - {fileID: 21300000, guid: 65f8f2c0f5fe85d42a56d7b4a74aeb73, type: 3}
+  - {fileID: 21300000, guid: 62ce54821bdf7a54585a0cadcd0b0760, type: 3}
   cardBack: {fileID: 21300000, guid: 0ea3639236ae0454f847dd7857d19081, type: 3}
   cards:
   - {fileID: 2046463051}

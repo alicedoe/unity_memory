@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour {
         if ( message == "win") {
             winBlock.gameObject.SetActive(true);
             
-            if ( highscore > t ) {
+            if ( highscore > t || highscore == 0 ) {
                 PlayerPrefs.SetFloat ("highscore", t);
                 winText.text = "New reccord : "+time;
             } else {
