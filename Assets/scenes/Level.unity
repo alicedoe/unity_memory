@@ -652,19 +652,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 62ce54821bdf7a54585a0cadcd0b0760, type: 3}
   - {fileID: 21300000, guid: 84a4119d5ce24dd43a022e0081fa5181, type: 3}
   cardFaceDeck2:
-  - {fileID: 21300000, guid: 4a13ee7415baf4e4cba44f0a0190e4da, type: 3}
-  - {fileID: 21300000, guid: 7e4dee49b53af1146bb30f4c2fa13f2e, type: 3}
-  - {fileID: 21300000, guid: 6544dda025af387469fed6b9ae397991, type: 3}
-  - {fileID: 21300000, guid: 2f1241e9c06496849888a096772d9418, type: 3}
-  - {fileID: 21300000, guid: 03451e17cb45a324f878877181836ae9, type: 3}
-  - {fileID: 21300000, guid: 5b5ce1021470c23449c08ecd7f774e7a, type: 3}
-  - {fileID: 21300000, guid: 34088297d19463341b5a93a11b8a15cb, type: 3}
-  - {fileID: 21300000, guid: 5d3c37242f11faa43a73abd10f980692, type: 3}
-  - {fileID: 21300000, guid: 7936b7de38cf60b40a8115df0cf8cfaa, type: 3}
-  - {fileID: 21300000, guid: 969edb77536d2c149a0625cd34c202d9, type: 3}
-  - {fileID: 21300000, guid: 8ce8125c265d8424e91fdf19ab20dbcf, type: 3}
-  - {fileID: 21300000, guid: 6eb08e60b9922aa4b8f4ad1a19cd4b78, type: 3}
-  - {fileID: 21300000, guid: e847fec8799ba8845927c95480c3b17f, type: 3}
+  - {fileID: 21300000, guid: fefff8bf51076cd4ab3d492cd17fd279, type: 3}
+  - {fileID: 21300000, guid: 7403919ac7782e642afbe78ab2da99c5, type: 3}
+  - {fileID: 21300000, guid: 261a9302a30c97240a39b8faa11da03d, type: 3}
+  - {fileID: 21300000, guid: 37985909812e72b408849423d6dd7133, type: 3}
+  - {fileID: 21300000, guid: 3822228debe93394da1e32c3386f4ea8, type: 3}
+  - {fileID: 21300000, guid: c646ea35bb11d5f4fb4ee9c6cf66c618, type: 3}
+  - {fileID: 21300000, guid: dd558e3319b1c96489c417c53999f9de, type: 3}
+  - {fileID: 21300000, guid: 929e1528ce1a85f4d9da34180341b9f3, type: 3}
+  - {fileID: 21300000, guid: e0d2e6d7fc823bb4bbd8605ac7c9691b, type: 3}
+  - {fileID: 21300000, guid: 4fc36de0c00410b41842fcd723386949, type: 3}
+  - {fileID: 21300000, guid: 313835f484524ac42a47b8419f5203eb, type: 3}
+  - {fileID: 21300000, guid: eb086ee569196b6439784ab7d297c069, type: 3}
+  - {fileID: 21300000, guid: 9ff7db977b1995246bfd82a0b9f421f8, type: 3}
   cardBack: {fileID: 21300000, guid: 0ea3639236ae0454f847dd7857d19081, type: 3}
   cards:
   - {fileID: 2046463051}
