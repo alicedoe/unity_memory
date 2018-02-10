@@ -1,14 +1,19 @@
-# Project Title
+# Memory Warrior !!
 
 First project using Unity : Memory game !
 
 ## Getting Started
 
-It's unity project just open it with Unity (i made it with version 2017.3.0f3)
+It's unity project just open it with Unity (I made it with version 2017.3.0f3)
 
 ### Installing
 
 The project has 2 scenes : first scene is Menu and the game scene is level
+
+## Screenshot
+
+![Alt text](https://raw.githubusercontent.com/alicedoe/unity_memory/master/public/screenshot1.PNG "screen menu")
+![Alt text](https://raw.githubusercontent.com/alicedoe/unity_memory/master/public/screenshot2.PNG "screen level")
 
 ## History
 
