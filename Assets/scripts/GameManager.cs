@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public Sprite[] cardFace;
+    public Sprite[] cardFaceDeck1;
+    public Sprite[] cardFaceDeck2;
     public Sprite cardBack;
     public GameObject[] cards;
     public Text winText;
@@ -80,7 +81,11 @@ public class GameManager : MonoBehaviour {
 
     public Sprite getCardFace(int i)
     {
-        return cardFace[i-1];
+        switch(MenuBehavior.deck) {
+            default:
+            case (1): return cardFaceDeck1[i-1];
+            case (2): return cardFaceDeck2[i-1];
+        }
     }
 
     void checkCards()
@@ -138,8 +143,6 @@ public class GameManager : MonoBehaviour {
                 winText.text = "Your time : "+time;
             }
 
-            yield return new WaitForSeconds(1);
-            SceneManager.LoadScene("Menu");
         }
 
         if ( message == "matche") {
@@ -163,5 +166,9 @@ public class GameManager : MonoBehaviour {
         
         string scoreString = minutesStr+":"+secondesStr;
         return scoreString;
+    }
+
+    public void triggerBackToMenu () {
+        SceneManager.LoadScene("Menu");
     }
 }
