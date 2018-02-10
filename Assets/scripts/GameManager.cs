@@ -15,16 +15,18 @@ public class GameManager : MonoBehaviour {
     public Text timerText;
     public GameObject winBlock;
     public GameObject findMatch;
-    public static float highscore;
+    public static int highscore;
 
     private bool _init = false;
     private int _matches = 0;
     private float startTime;
     private float finalTime;
     private float t;
+    private int flipCards;
 
     void Start() {
-        highscore = PlayerPrefs.GetFloat ("highscore");
+        highscore = PlayerPrefs.GetInt ("highscore");
+        flipCards =0;
     }
 
 	// Update is called once per frame
@@ -94,7 +96,8 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < cards.Length; i++)
         {
             if (cards[i].GetComponent<Card>().state == 1)
-                c.Add(i);
+                { flipCards ++;
+                c.Add(i); }
         }
         if (c.Count == 2)
             cardComparaison(c);
@@ -135,12 +138,19 @@ public class GameManager : MonoBehaviour {
     {
         if ( message == "win") {
             winBlock.gameObject.SetActive(true);
-            
-            if ( highscore > t || highscore == 0 ) {
-                PlayerPrefs.SetFloat ("highscore", t);
-                winText.text = "New reccord : "+time;
+            int timeScore = Mathf.Abs(250 - ((int) t * 2));
+            int flipScore = Mathf.Abs(150 - flipCards);
+            int totalScore = timeScore + flipScore;
+            if ( highscore < totalScore || highscore == 0 ) {
+                PlayerPrefs.SetInt ("highscore", totalScore);
+                winText.text = "Your time  :  "+time+"  =  "+timeScore+" points";
+                winText.text += "\nFlip cards  :  "+flipCards+"  =  "+flipScore+" points";
+                winText.text += "\nTotal score  =  "+totalScore+" points";
+                winText.text += "\nNEW RECCORD !!";
             } else {
-                winText.text = "Your time : "+time;
+                winText.text = "Your time : "+time+" = "+timeScore+" points";
+                winText.text += "\nFlip cards : "+flipCards+" = "+flipScore+" points";
+                winText.text += "\nTotal score = "+totalScore+" points";
             }
 
         }

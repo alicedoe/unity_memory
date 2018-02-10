@@ -6,18 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class MenuBehavior : MonoBehaviour {
 
-    public static float highscore;
+    public static int highscore;
     public Text highscoreText;
     public static int deck;
 
     void Start() {
         if ( PlayerPrefs.HasKey("highscore") ) {
-            highscore = PlayerPrefs.GetFloat("highscore");
+            highscore = PlayerPrefs.GetInt("highscore");
+            highscoreText.text = "Reccord : "+highscore+" Points";
         } else {
             highscore = 0;
-        }
-
-        highscoreText.text = "Reccord : "+GameManager.highscoreToString(highscore);
+            highscoreText.text = "No highscore";
+        }        
     }
 
     public void triggerMenuBehavior (int i) {
