@@ -6,18 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class MenuBehavior : MonoBehaviour {
 
+    public static float version = 0.1f;
     public static int highscore;
     public Text highscoreText;
     public static int deck;
 
     void Start() {
+
+        LocalizationManager loc = LocalizationManager.instance;
+
+        if ( !PlayerPrefs.HasKey("version") || PlayerPrefs.GetFloat("version") < version ) {
+             PlayerPrefs.DeleteAll();
+             PlayerPrefs.SetFloat("version", version);
+        }
+
         if ( PlayerPrefs.HasKey("highscore") ) {
             highscore = PlayerPrefs.GetInt("highscore");
-            highscoreText.text = "Reccord : "+highscore+" Points";
+            highscoreText.text = loc.GetLocalizedValue("Reccord")+" : "+highscore+" "+loc.GetLocalizedValue("Points");
         } else {
             highscore = 0;
-            highscoreText.text = "No highscore";
+            highscoreText.text = loc.GetLocalizedValue("no_highscore");
         }        
+        
     }
 
     public void triggerMenuBehavior (int i) {

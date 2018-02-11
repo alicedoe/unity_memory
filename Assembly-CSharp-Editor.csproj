@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{95E93B3F-B08C-354F-6283-413E4DC0A4BF}</ProjectGuid>
+    <ProjectGuid>{B95649D7-26E2-B05B-8D74-80935D877B24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -51,13 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\Card.cs" />
-     <Compile Include="Assets\scripts\GameManager.cs" />
-     <Compile Include="Assets\scripts\LocalizationData.cs" />
-     <Compile Include="Assets\scripts\LocalizationManager.cs" />
-     <Compile Include="Assets\scripts\LocalizedText.cs" />
-     <Compile Include="Assets\scripts\MenuBehavior.cs" />
-     <Compile Include="Assets\scripts\StartupManager.cs" />
+     <Compile Include="Assets\scripts\Editor\LocalizedTextEditor.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -145,6 +139,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/Aliiiiiiiiii/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{95E93B3F-B08C-354F-6283-413E4DC0A4BF}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

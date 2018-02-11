@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     private float finalTime;
     private float t;
     private int flipCards;
+    private LocalizationManager loc = LocalizationManager.instance;
 
     void Start() {
         highscore = PlayerPrefs.GetInt ("highscore");
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour {
         if (_matches == 13)
             {
                 string time = timerText.text;
-                timerText.text = "Finish";
+                timerText.text = loc.GetLocalizedValue("Finish");
             } else timerText.text = highscoreToString(t);
         
 	}
@@ -107,13 +108,12 @@ public class GameManager : MonoBehaviour {
     {
         Card.DO_NOT = true;
         int x = 0;
-        Debug.Log(string.Format("highscore = {0} - t = {1}", highscore,t));
         if(cards[c[0]].GetComponent<Card>().cardValue == cards[c[1]].GetComponent<Card>().cardValue)
         {
             x = 2;
             displayMessage( "matche",null );
             _matches++;
-            matchText.text = "Number of matches: " + _matches;
+            matchText.text = loc.GetLocalizedValue("number_of_matches")+" : " + _matches;
             if (_matches == 13)
             {
                 string time = timerText.text;
@@ -141,16 +141,12 @@ public class GameManager : MonoBehaviour {
             int timeScore = Mathf.Abs(250 - ((int) t * 2));
             int flipScore = Mathf.Abs(150 - flipCards);
             int totalScore = timeScore + flipScore;
+            winText.text = loc.GetLocalizedValue("your_time")+"  :  "+time+"  =  "+timeScore+" "+loc.GetLocalizedValue("points");
+            winText.text += "\n"+loc.GetLocalizedValue("flip_cards")+"  :  "+flipCards+"  =  "+flipScore+" "+loc.GetLocalizedValue("points");
+            winText.text += "\n"+loc.GetLocalizedValue("total_score")+"  =  "+totalScore+" "+loc.GetLocalizedValue("points");
             if ( highscore < totalScore || highscore == 0 ) {
-                PlayerPrefs.SetInt ("highscore", totalScore);
-                winText.text = "Your time  :  "+time+"  =  "+timeScore+" points";
-                winText.text += "\nFlip cards  :  "+flipCards+"  =  "+flipScore+" points";
-                winText.text += "\nTotal score  =  "+totalScore+" points";
-                winText.text += "\nNEW RECCORD !!";
-            } else {
-                winText.text = "Your time : "+time+" = "+timeScore+" points";
-                winText.text += "\nFlip cards : "+flipCards+" = "+flipScore+" points";
-                winText.text += "\nTotal score = "+totalScore+" points";
+                PlayerPrefs.SetInt ("highscore", totalScore);                
+                winText.text += "\n"+loc.GetLocalizedValue("new_record")+" !!";
             }
 
         }

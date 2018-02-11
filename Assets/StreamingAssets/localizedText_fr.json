@@ -1,0 +1,16 @@
+{
+    "items":
+    [
+        {"key":"quit","value":"Quitter"},
+        {"key":"start","value":"Commencer"},
+        {"key":"record","value":"Record"},
+        {"key":"no_highscore","value":"Pas de record"},
+        {"key":"finish","value":"Fini"},
+        {"key":"number_of_matches","value":"Nombre de paires"},
+        {"key":"your_time","value":"Votre temps"},
+        {"key":"points","value":"points"},
+        {"key":"flip_cards","value":"Cartes retournées"},
+        {"key":"total_score","value":"Score total"},
+        {"key":"new_record","value":"Nouveau record"}
+    ]
+}
