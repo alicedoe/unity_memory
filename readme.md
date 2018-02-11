@@ -8,7 +8,7 @@ It's unity project just open it with Unity (I made it with version 2017.3.0f3)
 
 ### Installing
 
-The project has 2 scenes : first scene is Menu and the game scene is level
+The project has 3 scenes : Langages / Menu the game scene is level
 
 ## Screenshot
 
@@ -23,6 +23,7 @@ The project has 2 scenes : first scene is Menu and the game scene is level
     - Timer + Count how many cards are flipped
     - Two deck of cards 
     - Create an highscore using timer & flip cards and store it into user prefs
+    - Add localization using json files for each langages
 * I need to add several improvements and features this is the next step : add rainbow & sparkles in case of victory / add malus card : pick it up and all the card are shuffle or add bonus card : 3 same card to find but only one time etc ...
 
 ## License

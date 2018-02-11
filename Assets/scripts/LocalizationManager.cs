@@ -21,18 +21,31 @@ public class LocalizationManager : MonoBehaviour {
 	
 	public void LoadLocalizedText (string fileName) {
 		localizedText = new Dictionary<string,string> ();
-		string filePath =Path.Combine(Application.streamingAssetsPath, fileName);
-		if (File.Exists(filePath)) {
+
+		// string filePath =Path.Combine(Application.streamingAssetsPath, fileName);
+		string filePath = Path.Combine(Application.streamingAssetsPath + "/", fileName);
+		Debug.LogError(filePath);
+		if (File.Exists("jar:file:///data/app/com.defaultcompany.memory-1/base.apk/assets/localizedText_fr.json")) {
+			// string dataAsJson = File.ReadAllText(filePath);
+
+			#if UNITY_EDITOR || UNITY_IOS
 			string dataAsJson = File.ReadAllText(filePath);
+
+			#elif UNITY_ANDROID
+			WWW reader = new WWW (filePath);
+			while (!reader.isDone) {
+			}
+			string dataAsJson = reader.text;
+			#endif
+
 			LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJson);
 
 			for (int i = 0; i < loadedData.items.Length; i++ ) {
 				localizedText.Add(loadedData.items[i].key, loadedData.items [i].value);
 			}
-			 Debug.Log ("Data loaded, dictionary contains: " + localizedText.Count + " entries");
 		}
 		else {
-			Debug.LogError("Cannot find file ! : " + Application.streamingAssetsPath + fileName);
+			Debug.LogError("Cannot find file ! : " + filePath);
 		}
 
 		isReady = true;

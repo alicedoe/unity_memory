@@ -11,6 +11,8 @@
         {"key":"points","value":"points"},
         {"key":"flip_cards","value":"Flipped cards"},
         {"key":"total_score","value":"Total score"},
-        {"key":"new_record","value":"New record"}
+        {"key":"new_record","value":"New record"},
+        {"key":"back","value":"Back to menu"},
+        {"key":"choose_your_deck","value":"Choose your deck :"}
     ]
 }

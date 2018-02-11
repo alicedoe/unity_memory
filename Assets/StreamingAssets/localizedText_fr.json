@@ -11,6 +11,8 @@
         {"key":"points","value":"points"},
         {"key":"flip_cards","value":"Cartes retournées"},
         {"key":"total_score","value":"Score total"},
-        {"key":"new_record","value":"Nouveau record"}
+        {"key":"new_record","value":"Nouveau record"},
+        {"key":"back","value":"Retour au menu"},
+        {"key":"choose_your_deck","value":"Choisissez vos cartes :"}
     ]
 }
