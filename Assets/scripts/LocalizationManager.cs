@@ -27,6 +27,7 @@ public class LocalizationManager : MonoBehaviour
     public void LoadLocalizedText(string fileName)
     {
         localizedText = new Dictionary<string, string>();
+        string jsonString = "" ;
 
         string destinationPath = Path.Combine(Application.persistentDataPath, fileName);
 
@@ -38,46 +39,37 @@ public class LocalizationManager : MonoBehaviour
         
         if (sourcePath.Contains("://"))
         {
-            // Android  
             WWW www = new WWW(sourcePath);
-            while (!www.isDone) {; }                // Wait for download to complete - not pretty at all but easy hack for now 
+            while (!www.isDone) {; } 
             if (string.IsNullOrEmpty(www.error))
             {
                 File.WriteAllBytes(destinationPath, www.bytes);
                 StreamReader reader = new StreamReader(destinationPath);
-                var jsonString = reader.ReadToEnd();
-                LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(jsonString);
-                for (int i = 0; i < loadedData.items.Length; i++)
-                {            
-                    localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
-                }
+                jsonString = reader.ReadToEnd();
                 reader.Close();
             }
             else
             {
-                Debug.Log("ERROR: the file DB named " + fileName + " doesn't exist in the StreamingAssets Folder, please copy it there.");
+                Debug.LogError("Cannot find file ! : " + fileName);
             }
         }
         else
         {
-            Debug.Log("Mac, Windows, Iphone FILEPATH : " + sourcePath);
-            // Mac, Windows, Iphone
             if (File.Exists(sourcePath))
             {
-                string dataAsJson = File.ReadAllText(sourcePath);
-                LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJson);
-                for (int i = 0; i < loadedData.items.Length; i++)
-                {
-                    Debug.Log(loadedData.items[i].key);
-                    localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
-                }
+                jsonString = File.ReadAllText(sourcePath);
             }
             else
             {
-                Debug.LogError("Cannot find file ! : " + Application.streamingAssetsPath + fileName);
+                Debug.LogError("Cannot find file ! : " + fileName);
             }
         }
 
+        LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(jsonString);
+        for (int i = 0; i < loadedData.items.Length; i++)
+        {            
+            localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
+        }
         isReady = true;
     }
 
